@@ -10,7 +10,7 @@ public class inputing {
         //if you want to input string
         Scanner scan = new Scanner(System.in);
         System.out.println("enter your name:");
-        String name = scan.next();
+        String name = scan.next();//to input word use next() and for line use nextLine()
 
     }
 }
