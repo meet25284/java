@@ -4,7 +4,7 @@ public class switchcase {
         switch (day) {
             case 1 :
                 System.out.println("monday");
-                break;
+                break;//break must to use for break a statement
             case 2 :
                 System.out.println("tuesday");
                 break;    
