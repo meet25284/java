@@ -1,18 +1,20 @@
 import java.util.*;
 
 public class practice {
-    public static void reverse(String str ,int n) {
-     if(n == 0){
-     System.out.print(str.charAt(n));
-        return;
-     }
-     System.out.print(str.charAt(n));
-     reverse(str ,n-1);
+    public static boolean sort(int arr[] , int i){
+        if(i == arr.length-1){
+            return true;
+        }
+        if(arr[i] < arr[i+1]){
+           return sort(arr ,i+1);            
+        }
+        else{
+            return false;
+        }
+        
     }
-
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();        
-        reverse(str ,(str.length())-1);
-    }
+   public static void main(String arg[]){
+    int arr[] = {1,2,5,4,5};
+    System.out.println(sort(arr , 0) );
+   }
 }
