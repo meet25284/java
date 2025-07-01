@@ -1,20 +1,20 @@
 import java.util.*;
 
 public class practice {
-    public static boolean sort(int arr[] , int i){
-        if(i == arr.length-1){
-            return true;
+    public static void printperm(String str,String perm){
+        if(str.length() == 0){
+            System.out.println(perm);
+            return;
         }
-        if(arr[i] < arr[i+1]){
-           return sort(arr ,i+1);            
-        }
-        else{
-            return false;
+        for(int i = 0; i < str.length(); i++){
+            char currentchar = str.charAt(i);
+            String newstr = str.substring(0 , i) + str.substring(i+1);
+            printperm(newstr,perm + currentchar);
         }
         
     }
    public static void main(String arg[]){
-    int arr[] = {1,2,5,4,5};
-    System.out.println(sort(arr , 0) );
+        String str = "abcd";
+        printperm(str,"");
    }
 }
