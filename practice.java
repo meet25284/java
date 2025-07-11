@@ -1,20 +1,70 @@
-import java.util.*;
+class practice {
+    public static boolean isValid(String s) {
+        System.out.println(s.length());
+        String[] callStack = new String[s.length()];
+        boolean result = true;
+        int lastidx = -1;
+        for(int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
 
-public class practice {
-    public static void printperm(String str,String perm){
-        if(str.length() == 0){
-            System.out.println(perm);
-            return;
+            if(c == '{'){
+                callStack[lastidx + 1] = "CURLY";
+                lastidx++;
+            }
+            else if(c == '('){
+                callStack[lastidx + 1] = "ROUND";
+                lastidx++;
+            }
+            else if(c == '['){
+                callStack[lastidx + 1] = "SQUARE";
+                lastidx++;
+            }
+            else if(c == '}'){
+                if(callStack[lastidx] ==  "CURLY"){
+                    callStack[lastidx] = "";
+                lastidx--;
+                }
+                else{
+                    result = false;
+                    break;
+                }
+            }
+            else if(c == ']'){
+                if(callStack[lastidx] ==  "SQUARE"){
+                    callStack[lastidx] = "";
+                lastidx--;
+                }
+                else{
+                    result = false;
+                    break;
+                }
+            }
+            else if(c == ')'){
+                if(callStack[lastidx] ==  "ROUND"){
+                    callStack[lastidx] = "";
+                lastidx--;
+                }
+                else{
+                    result = false;
+                    break;
+                }
+            }
         }
-        for(int i = 0; i < str.length(); i++){
-            char currentchar = str.charAt(i);
-            String newstr = str.substring(0 , i) + str.substring(i+1);
-            printperm(newstr,perm + currentchar);
+        for(int i = 0; i < callStack.length;i++){
+            System.out.println(callStack[i]);
+            System.out.println((callStack[i] == "" && callStack[i] != null) || (callStack[i] == null && callStack[i] != ""));
+           
+            if((callStack[i] == "" && callStack[i] == null)){
+                result = false;
+            }
         }
-        
+        return result;
     }
-   public static void main(String arg[]){
-        String str = "abcd";
-        printperm(str,"");
-   }
+        public static void main(String[] args){
+            String s = "}";
+            isValid(s);
+        }
 }
+    
+    
+    
