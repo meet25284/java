@@ -71,6 +71,25 @@ public class linklist {
         lastSecond.next = null;
     }
 
+    //reverse iterating linked list
+    public void reverseIterate(){
+        if(head == null || head.next == null){
+            return;
+        }
+
+        Node curr = head.next;
+        Node prev = head;
+        while(curr != null){
+            Node Next = curr.next;
+            curr.next = prev;
+
+            prev = curr;
+            curr = Next;
+        }
+        head.next = null;
+        head = prev;
+    }
+
 
 
     //print list
@@ -100,13 +119,16 @@ public class linklist {
         list.printList();
         list.AddLast("Ashokbhai");
         list.printList();
-        list.deleteFirst();
-        list.deleteLast();
-        list.printList();
+        // list.deleteFirst();
+        // list.deleteLast();
+        // list.printList();
         System.out.println(list.getSize());
 
+        list.reverseIterate();
+        list.printList();
+
         // this is how to make linked list we can use it method get, remove, add, size
-        LinkedList<int> list = new LinkedList<int>();
+        // LinkedList<int> list = new LinkedList<int>();
 
 
     }
