@@ -1,3 +1,5 @@
+import java.util.Queue;
+
 public class QueueY {
     static class Queue {
        static int arr[];
@@ -59,7 +61,7 @@ public class QueueY {
            return arr[0];
        }
    }
-   // circuler queue using array
+   // circuler queue using array - O(1)
    static class CirQueue {
        static int arr[];
        static int size;
@@ -98,7 +100,7 @@ public class QueueY {
        }
 
 
-       //O(n)
+       //O(1)
        //deque
        public static int remove() {
            if(isEmpty()) {
@@ -127,9 +129,66 @@ public class QueueY {
            return arr[front];
        }
    }
+
+   //queue using linklist
+    static class Node{
+        int data;
+        Node next;
+        
+        Node(int data){
+            this.data = data;
+            next = null;
+        }    
+   }
+
+   static class LLqueue {
+    static Node head = null;
+    static Node tail = null;
+    
+    public static boolean isEmpty(){
+        return head == null && tail == null;
+    }
+
+    public static void add(int data){
+        Node newNode = new Node(data);
+        if(tail == null){
+            tail = head = newNode;
+            return;
+        }
+        tail.next = newNode;
+        tail = newNode;
+    }
+
+    public static int remove(){
+        if(isEmpty()){
+            System.out.println("queue is empty");
+            return -1;
+        }
+        int front = head.data;
+        head = head.next;
+        if (head == null) {
+        tail = null;
+    }
+
+        return front;
+    }
+
+    public static int peek(){
+        if(isEmpty()){
+            System.out.println("queue is empty");
+            return -1;
+        }
+
+        return head.data;
+
+    }
+   
+    
+   }
    public static void main(String args[]) {
         Queue q = new Queue(5);
         CirQueue Q = new CirQueue(5);
+        LLqueue llq = new LLqueue();
         System.out.println("using normal queue");
         q.add(0);
         q.add(1);
@@ -153,6 +212,16 @@ public class QueueY {
         while (!Q.isEmpty()) {
             System.out.println(Q.peek());
             Q.remove();
+        }
+
+        System.out.println("queue using linked list");
+        llq.add(0);
+        llq.add(1);
+        llq.add(3);
+        llq.add(2);
+         while (!llq.isEmpty()) {
+            System.out.println(llq.peek());
+            llq.remove();
         }
 
 
