@@ -1,13 +1,12 @@
-import java.util.Queue;
-
+import java.util.*;
 public class QueueY {
-    static class Queue {
+    static class ArrQueue {
        static int arr[];
        static int size;
        static int rear;
 
 
-        Queue(int size) {
+        ArrQueue(int size) {
            this.size = size;
            arr = new int[size];
            rear = -1;
@@ -186,7 +185,7 @@ public class QueueY {
     
    }
    public static void main(String args[]) {
-        Queue q = new Queue(5);
+        ArrQueue q = new ArrQueue(5);
         CirQueue Q = new CirQueue(5);
         LLqueue llq = new LLqueue();
         System.out.println("using normal queue");
@@ -223,6 +222,20 @@ public class QueueY {
             System.out.println(llq.peek());
             llq.remove();
         }
+
+        System.out.println("queue using collection framework");
+        Queue<Integer> queue = new LinkedList<>();// using linked list because queue is interface
+        // Queue<Integer> queue = new ArrayDeque<>();// using arraydeque
+        queue.add(0);
+        queue.add(1);
+        queue.add(3);
+        queue.add(2);
+         while (!queue.isEmpty()) {
+            System.out.println(queue.peek());
+            queue.remove();
+        }
+
+
 
 
     }
